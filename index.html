@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1 id="remaining-guess" class="display-4"></h1>
+    <input type="number" id="guess-input" min=0 max=100>
+    <button id="guess-button" onclick="guessingGame()">GUESS HERE!</button>
+    <span id="outcome"></span>
+
+    <div id="guess-success" class="alert alert-success" role="alert" style="display: none;">
+        SUCCESS!
+    </div>
+
+    <div id="guess-wrong" class="alert alert-danger" role="alert" style="display: none;">
+            WRONG GUESS!
+        </div>
+
+    <div id="out-of-turn"></div>
+
+    <button id="reset-button" onclick="resetGame()">Reset Here or Press Alt + F4</button>
+
+    <script src="script/script.js"></script>
+</body>
+</html>
