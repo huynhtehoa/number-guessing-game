@@ -1,4 +1,5 @@
 let remainingGuess = 10;
+let arrayHistory = [];
 
 document.getElementById("remaining-guess").innerHTML = remainingGuess;
 
@@ -12,7 +13,8 @@ function guessingGame() {
   let guessInput = parseInt(document.getElementById("guess-input").value);
 
   if (remainingGuess == 0) {
-    return document.getElementById("out-of-turn").innerHTML = "No more turn. Press Alt + F4!";
+    return (document.getElementById("out-of-turn").innerHTML =
+      "No more turn. Press Alt + F4!");
   }
   if (guessInput < correctNumber) {
     guessOutcome = "Your number is too low";
@@ -23,38 +25,41 @@ function guessingGame() {
     guessOutcome = "Your number is too high";
     displayWrong = "block";
     displayCorrect = "none";
-
   }
   if (guessInput == correctNumber) {
     displayCorrect = "block";
     displayWrong = "none";
-
   }
-  document.getElementById("guess-wrong").style.display =  displayWrong;
+  document.getElementById("guess-wrong").style.display = displayWrong;
   document.getElementById("guess-success").style.display = displayCorrect;
   document.getElementById("outcome").innerHTML = guessOutcome;
   document.getElementById("guess-input").value = "";
-  document.getElementById("remaining-guess").innerHTML = parseInt(remainingGuess) - 1;
 
-  remainingGuess -= 1;
+  //output history & check duplicated & OMG I dont know how i did this x_x
 
-//output history
-  let arrayHistory = []
+  duplicatedHistory = false;
 
-  arrayHistory.push(guessInput)
-
-  arrayHistory.forEach(function(element) {
-    
-    if (element == guessInput) {
-      console.log("fuckyou")
+  for (let i=0; i<arrayHistory.length; i++) {
+    if (guessInput == arrayHistory[i]) {
+      duplicatedHistory = true;
+      alert("History Duplicated");
+      break;
     }
+  };
 
-    document.getElementById("history").innerHTML += element + " "
-  } 
-  )
+  if (duplicatedHistory == false) {
+    remainingGuess -= 1;
+    document.getElementById("remaining-guess").innerHTML = remainingGuess;
+  }
+
+  arrayHistory.push(guessInput);
+
+  document.getElementById("history").innerHTML = "";
+
+  for (let i=0; i<arrayHistory.length; i++) {
+  document.getElementById("history").innerHTML += arrayHistory[i] + " ";
+  };
 }
-
-
 
 function resetGame() {
   remainingGuess = 10;
@@ -63,4 +68,5 @@ function resetGame() {
   document.getElementById("outcome").innerHTML = "";
   document.getElementById("guess-wrong").style.display = "none";
   document.getElementById("guess-success").style.display = "none";
+  document.getElementById("history").innerHTML = "";
 }
