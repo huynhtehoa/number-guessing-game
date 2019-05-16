@@ -8,27 +8,36 @@
     <!--Bootstrap 4-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <title>Number Guessing Game</title>
 </head>
 
-<body style="padding: 50px;">
-    <h1 id="remaining-guess" class="display-4"></h1>
-    <input type="number" id="guess-input" min=0 max=100>
-    <button id="guess-button" onclick="guessingGame()">GUESS HERE!</button>
-    <span id="outcome"></span>
-    <div id="guess-success" class="alert alert-success" role="alert" style="display: none;">
-        SUCCESS!
+<body class="d-flex">
+    <div class="container">
+        <div class="d-flex justify-content-center" style="align-items: center;">
+            <label class="px-2">Remaining Turns</label>
+            <h1 id="remaining-guess" class="px-2"></h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            <input class="px-2" type="number" id="guess-input" min=0 max=100>
+            <button class="px-2" id="guess-button" onclick="guessingGame()">GUESS HERE!</button>
+        </div>
+        <div class="d-flex justify-content-center" id="outcome"></div>
+        <div id="guess-success" class="alert alert-success" role="alert" style="display: none;">
+            SUCCESS!
+        </div>
+        <div id="guess-wrong" class="alert alert-danger" role="alert" style="display: none;">
+            WRONG GUESS!
+        </div>
+        <div id="out-of-turn"></div>
+        <div class="d-flex justify-content-center" id="outcome">
+            <label>History &nbsp;</label>
+            <div id="history"></div>
+        </div>
+        <div class="d-flex justify-content-center" id="outcome">
+            <button id="reset-button" onclick="resetGame()">Reset Here or Press Ctrl + W</button>
+        </div>
     </div>
-    <div id="guess-wrong" class="alert alert-danger" role="alert" style="display: none;">
-        WRONG GUESS!
-    </div>
-    <div id="out-of-turn"></div>
-    <div>
-        <label>History</label>
-        <div id="history"></div>
-    </div>
-    <button id="reset-button" onclick="resetGame()">Reset Here or Press Ctrl + W</button>
-
     <script src="script/script.js"></script>
 </body>
 

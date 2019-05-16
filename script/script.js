@@ -1,5 +1,4 @@
 let remainingGuess = 10;
-let arrayHistory = [];
 
 document.getElementById("remaining-guess").innerHTML = remainingGuess;
 
@@ -35,12 +34,14 @@ function guessingGame() {
   document.getElementById("outcome").innerHTML = guessOutcome;
   document.getElementById("guess-input").value = "";
 
-  //output history & check duplicated & OMG I dont know how i did this x_x
+  //output history & check duplicated
+  
+  let guessHistory = [];
 
   duplicatedHistory = false;
 
-  for (let i=0; i<arrayHistory.length; i++) {
-    if (guessInput == arrayHistory[i]) {
+  for (let i=0; i<guessHistory.length; i++) {
+    if (guessInput == guessHistory[i]) {
       duplicatedHistory = true;
       alert("History Duplicated");
       break;
@@ -52,16 +53,17 @@ function guessingGame() {
     document.getElementById("remaining-guess").innerHTML = remainingGuess;
   }
 
-  arrayHistory.push(guessInput);
+  guessHistory.push(guessInput);
 
   document.getElementById("history").innerHTML = "";
 
-  for (let i=0; i<arrayHistory.length; i++) {
-  document.getElementById("history").innerHTML += arrayHistory[i] + " ";
-  };
-}
+  for (let i=0; i<guessHistory.length; i++) {
+  document.getElementById("history").innerHTML += guessHistory[i] + " ";
+  }
+};
 
 function resetGame() {
+  guessHistory = []
   remainingGuess = 10;
   document.getElementById("remaining-guess").innerHTML = remainingGuess;
   document.getElementById("out-of-turn").innerHTML = "";
@@ -69,4 +71,4 @@ function resetGame() {
   document.getElementById("guess-wrong").style.display = "none";
   document.getElementById("guess-success").style.display = "none";
   document.getElementById("history").innerHTML = "";
-}
+};
