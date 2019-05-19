@@ -12,32 +12,42 @@
     <title>Number Guessing Game</title>
 </head>
 
-<body class="d-flex">
-    <div class="container">
-        <div class="d-flex justify-content-center" style="align-items: center;">
-            <label class="px-2">Remaining Turns</label>
-            <h1 id="remaining-guess" class="px-2"></h1>
+<body>
+    <top>
+        <div class="container">
+            <h1 class="text-danger d-flex justify-content-center">Number Guessing Game</h1>
         </div>
-        <div class="d-flex justify-content-center">
-            <input class="px-2" type="number" id="guess-input" min=0 max=100>
-            <button class="px-2" id="guess-button" onclick="guessingGame()">GUESS HERE!</button>
+    </top>
+    <header>
+        <div class="container">
         </div>
-        <div class="d-flex justify-content-center" id="outcome"></div>
-        <div id="guess-success" class="alert alert-success" role="alert" style="display: none;">
-            SUCCESS!
+    </header>
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-center" style="align-items: center;">
+                <label class="px-2">Remaining Turns</label>
+                <h4 id="remaining-guess" class="px-2"></h4>
+            </div>
+            <div class="d-flex justify-content-center" style="align-items: center;">
+                <label class="px-2">Best Score</label>
+                <h4 id="score" class="px-2"></h4>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input class="px-2" type="number" id="guess-input" min=0 max=100>
+                <button class="px-2" id="guess-button" onclick="guessingGame()">GUESS HERE!</button>
+            </div>
+            <div class="d-flex justify-content-center" id="outcome"></div>
+            <div id="guess-alert" class="alert" role="alert" style="display: none;"></div>
+            <div id="out-of-turn"></div>
+            <div class="d-flex justify-content-center">
+                <label>History &nbsp;</label>
+                <div id="history"></div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button id="reset-button" onclick="resetGame()">Reset Here or Press Ctrl + W</button>
+            </div>
         </div>
-        <div id="guess-wrong" class="alert alert-danger" role="alert" style="display: none;">
-            WRONG GUESS!
-        </div>
-        <div id="out-of-turn"></div>
-        <div class="d-flex justify-content-center" id="outcome">
-            <label>History &nbsp;</label>
-            <div id="history"></div>
-        </div>
-        <div class="d-flex justify-content-center" id="outcome">
-            <button id="reset-button" onclick="resetGame()">Reset Here or Press Ctrl + W</button>
-        </div>
-    </div>
+    </section>
     <script src="script/script.js"></script>
 </body>
 
