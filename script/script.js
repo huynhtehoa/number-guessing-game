@@ -1,12 +1,12 @@
-var randomNumber = Math.floor(Math.random() * 100);
-var guessInput;
-var remainingGuess = 10;
-var arrayHistory = new Array();
-var currentGame = 0;
+let randomNumber = Math.floor(Math.random() * 100);
+let guessInput;
+let remainingGuess = 10;
+let arrayHistory = new Array();
+let currentGame = 0;
 arrayHistory.push(new Array(10));
-var tempArray = [];
-var totalScore = 10;
-var scoreArray = [];
+let tempArray = [];
+let totalScore = 10;
+let scoreArray = [];
 scoreArray.push(totalScore);
 
 document.getElementById("remaining-guess").innerHTML = remainingGuess;
@@ -23,26 +23,17 @@ function guessingGame() {
   if (guessInput == randomNumber) {
     formatOutcome("SUCCESS", "block", "alert-success", "CORRECT");
   } else if (guessInput > randomNumber) {
-    formatOutcome(
-      "Your guess is too high",
-      "block",
-      "alert-warning",
-      "INCORRECT"
-    );
+    formatOutcome("Your guess is too high", "block", "alert-warning", "INCORRECT");
     scoreArray[currentGame] -= 1; 
   } else {
-    formatOutcome(
-      "Your guess is too low",
-      "block",
-      "alert-warning",
-      "INCORRECT"
-    );
+    formatOutcome("Your guess is too low", "block", "alert-warning", "INCORRECT");
     scoreArray[currentGame] -= 1;
   }
 
   remainingGuess -= 1;
 
   saveHistory();
+
   document.getElementById("remaining-guess").innerHTML = remainingGuess;
 
   document.getElementById("guess-input").value = "";
@@ -51,7 +42,6 @@ function guessingGame() {
 }
 
 function maxScore() {
-  console.log(scoreArray);
   return Math.max(...scoreArray);
 }
 
@@ -69,11 +59,9 @@ function saveHistory() {
   for (let i = 0; i <= currentGame; i++) {
     for (let j = 0; j < arrayHistory[i].length; j++) {
       if (typeof arrayHistory[i][j] !== "undefined") {
-        document.getElementById("history").innerHTML +=
-          arrayHistory[i][j] + " ";
+        document.getElementById("history").innerHTML += arrayHistory[i][j] + " ";
       }
     }
-    console.log(currentGame)
     document.getElementById("history").innerHTML += `Score: ${scoreArray[i]}`;
     document.getElementById("history").innerHTML += "<br>";
   }
@@ -90,10 +78,10 @@ function isDuplicated() {
 
 function finishGame() {
   if (remainingGuess == 0) {
-    alert("Out of guess. Auto reseting...");
+    alert("Out of guess. Next round...");
     return gameOver();
   } else if (guessInput == randomNumber) {
-    alert("Congratulations! You finish the game. Auto reseting...");
+    alert("Congratulations! You finish the game. Next round...");
     return gameOver();
   }
 }
